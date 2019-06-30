@@ -20,7 +20,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "com.github.draylar.modid.ExampleMod"
     ]
   },
   "mixins": [
