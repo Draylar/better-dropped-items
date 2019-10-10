@@ -4,17 +4,17 @@
   "id": "modid",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Fabric Example Mod",
+  "description": "Draylar's Fabric Example Mod!",
   "authors": [
-    "Me!"
+    "Draylar"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/Draylar",
+    "sources": "https://github.com/Draylar/fabric-example-mod"
   },
 
-  "license": "CC0-1.0",
+  "license": "GPLv3",
   "icon": "assets/modid/icon.png",
 
   "environment": "*",
