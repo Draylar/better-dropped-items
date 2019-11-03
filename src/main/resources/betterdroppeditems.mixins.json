@@ -2,8 +2,9 @@
   "required": true,
   "package": "com.github.draylar.modid.mixin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [
-
+  "client": [
+    "ItemEntityRendererMixin",
+    "ItemEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

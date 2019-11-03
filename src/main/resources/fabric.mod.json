@@ -1,11 +1,11 @@
 
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "betterdroppeditems",
   "version": "${version}",
 
-  "name": "Fabric Example Mod",
-  "description": "Draylar's Fabric Example Mod!",
+  "name": "Better Dropped Items",
+  "description": "Improves the visuals of dropped items!",
   "authors": [
     "Draylar"
   ],
@@ -15,16 +15,11 @@
   },
 
   "license": "GPLv3",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/betterdroppeditems/icon.png",
 
   "environment": "*",
-  "entrypoints": {
-    "main": [
-      "com.github.draylar.modid.ExampleMod"
-    ]
-  },
   "mixins": [
-    "modid.mixins.json"
+    "betterdroppeditems.mixins.json"
   ],
 
   "requires": {
