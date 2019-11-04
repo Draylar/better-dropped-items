@@ -36,18 +36,48 @@ dependencies {
 	modCompile "io.github.prospector:modmenu:${project.mod_menu_version}"
 }
 
-idea{
-	module{
-		inheritOutputDirs = false
-		outputDir = compileJava.destinationDir
-		testOutputDir = compileTestJava.destinationDir
+processResources {
+	inputs.property "version", version
+
+	from(sourceSets.main.resources.srcDirs) {
+		include "fabric.mod.json"
+		expand "version": version
+	}
+
+	from(sourceSets.main.resources.srcDirs) {
+		exclude "fabric.mod.json"
 	}
 }
 
-// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-// if it is present.
-// If you remove this task, sources will not be generated.
+tasks.withType(JavaCompile) {
+	options.encoding = "UTF-8"
+}
+
 task sourcesJar(type: Jar, dependsOn: classes) {
-	classifier = 'sources'
+	classifier = "sources"
 	from sourceSets.main.allSource
+}
+
+jar {
+	from "LICENSE"
+}
+
+publishing {
+	publications {
+		maven(MavenPublication) {
+			artifact("${buildDir.absolutePath}/libs/${archivesBaseName}-${version}.jar") {
+				classifier null
+				builtBy remapJar
+			}
+
+			artifact("${buildDir.absolutePath}/libs/${archivesBaseName}-${version}-dev.jar") {
+				classifier "dev"
+				builtBy remapJar
+			}
+
+			artifact(sourcesJar) {
+				builtBy remapSourcesJar
+			}
+		}
+	}
 }
