@@ -28,12 +28,12 @@ import net.minecraft.util.math.Vec3d;
 import com.github.draylar.modid.util.ItemEntityRotator;
 
 @Mixin(ItemEntityRenderer.class)
-public abstract class MixinItemEntityRenderer extends EntityRenderer<ItemEntity> {
+public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity> {
     @Shadow @Final private Random random;
     @Shadow @Final private ItemRenderer itemRenderer;
     @Shadow protected abstract int getRenderedAmount(ItemStack stack);
 
-    protected MixinItemEntityRenderer(EntityRenderDispatcher dispatcher) {
+    protected ItemEntityRendererMixin(EntityRenderDispatcher dispatcher) {
         super(dispatcher);
     }
 
