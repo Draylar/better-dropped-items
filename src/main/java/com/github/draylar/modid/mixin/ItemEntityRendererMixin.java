@@ -47,18 +47,18 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
         ItemStack itemStack = itemEntity.getStack();
 
         int seed = itemStack.isEmpty() ? 187 : Item.getRawId(itemStack.getItem()) + itemStack.getDamage();
-        this.random.setSeed((long) seed);
+        this.random.setSeed(seed);
 
         matrixStack.push();
-        BakedModel bakedModel = this.itemRenderer.getHeldItemModel(itemStack, itemEntity.world, (LivingEntity)null);
-        boolean hasDepthInGui = bakedModel.hasDepthInGui();
+        BakedModel bakedModel = this.itemRenderer.getHeldItemModel(itemStack, itemEntity.world, null);
+        boolean hasDepthInGui = bakedModel.hasDepth();
 
         int renderCount = this.getRenderedAmount(itemStack);
 
         matrixStack.multiply(Vector3f.POSITIVE_X.getRadialQuaternion(1.571F));
 
         ItemEntityRotator rotator = (ItemEntityRotator) itemEntity;
-        if(!itemEntity.onGround && !itemEntity.isInsideWater()) {
+        if(!itemEntity.onGround && !itemEntity.isSubmergedInWater()) {
             float rotation = ((float)itemEntity.getAge() + partialTicks) / 20.0F + itemEntity.hoverHeight;
             matrixStack.multiply(Vector3f.POSITIVE_Z.getRadialQuaternion(rotation));
             rotator.setRotation(new Vec3d(0, 0, rotation));
