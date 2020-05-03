@@ -14,7 +14,7 @@
     "sources": "https://github.com/Draylar/better-dropped-items"
   },
 
-  "license": "GPLv3",
+  "license": "MIT",
   "icon": "assets/betterdroppeditems/icon.png",
 
   "environment": "*",
@@ -22,7 +22,7 @@
     "betterdroppeditems.mixins.json"
   ],
 
-  "requires": {
+  "depends": {
     "fabricloader": ">=0.4.0",
     "fabric": "*"
   },
