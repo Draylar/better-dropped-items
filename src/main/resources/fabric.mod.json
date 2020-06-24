@@ -17,7 +17,7 @@
   "license": "MIT",
   "icon": "assets/betterdroppeditems/icon.png",
 
-  "environment": "*",
+  "environment": "client",
   "mixins": [
     "betterdroppeditems.mixins.json"
   ],
