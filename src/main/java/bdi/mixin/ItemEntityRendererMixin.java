@@ -38,7 +38,7 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
 
     @Inject(at = @At("RETURN"), method = "<init>")
     private void onConstructor(EntityRenderDispatcher dispatcher, ItemRenderer renderer, CallbackInfo callback) {
-        this.shadowSize = 0;
+        this.shadowRadius = 0;
     }
 
     @Inject(at = @At("HEAD"), method = "render", cancellable = true)
@@ -61,7 +61,7 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
 
         // rotate item
         ItemEntityRotator rotator = (ItemEntityRotator) itemEntity;
-        if(!itemEntity.onGround && !itemEntity.isSubmergedInWater()) {
+        if(!itemEntity.isOnGround() && !itemEntity.isSubmergedInWater()) {
             float rotation = ((float)itemEntity.getAge() + partialTicks) / 20.0F + itemEntity.hoverHeight;
             matrixStack.multiply(Vector3f.POSITIVE_Z.getRadialQuaternion(rotation));
             rotator.setRotation(new Vec3d(0, 0, rotation));
