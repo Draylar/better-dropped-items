@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.2.7-SNAPSHOT'
+	id 'fabric-loom' version '0.5-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -14,9 +14,6 @@ minecraft {
 
 repositories {
 	maven { url = "https://maven.fabricmc.net/" }
-	maven { url = "https://minecraft.curseforge.com/api/maven" }
-	maven { url = 'http://maven.sargunv.s3-website-us-west-2.amazonaws.com/' }
-	maven { url = "https://jitpack.io" }
 }
 
 dependencies {
@@ -25,7 +22,7 @@ dependencies {
 	modApi "net.fabricmc:fabric-loader:${project.loader_version}"
 	modApi "net.fabricmc.fabric-api:fabric-api:${project.api_version}"
 
-	modImplementation "io.github.prospector:modmenu:${project.mod_menu_version}"
+//	modImplementation "io.github.prospector:modmenu:${project.mod_menu_version}"
 }
 
 processResources {

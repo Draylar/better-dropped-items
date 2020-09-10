@@ -3,6 +3,7 @@ package bdi.mixin;
 import java.util.Random;
 
 import bdi.util.ItemEntityRotator;
+import net.minecraft.block.Blocks;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -76,6 +77,11 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
         if(itemEntity.getStack().getItem() instanceof BlockItem) {
             // make blocks flush with the ground
             matrixStack.translate(0, 0, -0.12f);
+        }
+
+        // special-case soul sand
+        if(itemEntity.world.getBlockState(itemEntity.getBlockPos()).getBlock().equals(Blocks.SOUL_SAND)) {
+            matrixStack.translate(0, 0, -.1);
         }
 
         float scaleX = bakedModel.getTransformation().ground.scale.getX();
