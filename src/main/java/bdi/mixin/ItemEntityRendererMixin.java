@@ -4,6 +4,7 @@ import bdi.util.ItemEntityRotator;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.block.SkullBlock;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
@@ -16,10 +17,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.item.AliasedBlockItem;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
@@ -166,6 +164,13 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
         // special-case soul sand
         if(dropped.world.getBlockState(dropped.getBlockPos()).getBlock().equals(Blocks.SOUL_SAND)) {
             matrix.translate(0, 0, -.1);
+        }
+
+        // special-case skulls
+        if(dropped.getStack().getItem() instanceof BlockItem) {
+            if(((BlockItem) dropped.getStack().getItem()).getBlock() instanceof SkullBlock) {
+                matrix.translate(0, .11, 0);
+            }
         }
 
         float scaleX = bakedModel.getTransformation().ground.scale.getX();
