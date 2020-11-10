@@ -3,7 +3,6 @@
   "schemaVersion": 1,
   "id": "betterdroppeditems",
   "version": "${version}",
-
   "name": "Better Dropped Items",
   "description": "Improves the visuals of dropped items!",
   "authors": [
@@ -11,7 +10,8 @@
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/better-dropped-items",
-    "sources": "https://github.com/Draylar/better-dropped-items"
+    "sources": "https://github.com/Draylar/better-dropped-items",
+    "issues": "https://github.com/Draylar/better-dropped-items/issues/"
   },
 
   "license": "MIT",
