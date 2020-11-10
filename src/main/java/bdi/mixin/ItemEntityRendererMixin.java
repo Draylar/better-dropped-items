@@ -22,6 +22,7 @@ import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -66,18 +67,25 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
             float rotation = ((float)itemEntity.getAge() + partialTicks) / 20.0F + itemEntity.hoverHeight;
             matrixStack.multiply(Vector3f.POSITIVE_Z.getRadialQuaternion(rotation));
             rotator.setRotation(new Vec3d(0, 0, rotation));
-        }
-        else {
+        } else if(itemEntity.getStack().getItem() instanceof AliasedBlockItem){
+            matrixStack.multiply(Vector3f.POSITIVE_Z.getRadialQuaternion((float) rotator.getRotation().z));
+        } else if(itemEntity.getStack().getItem() instanceof BlockItem) {
+            matrixStack.multiply(Vector3f.POSITIVE_X.getRadialQuaternion(300));
+            matrixStack.multiply(Vector3f.POSITIVE_Y.getRadialQuaternion((float) rotator.getRotation().z));
+            matrixStack.multiply(Vector3f.POSITIVE_Z.getRadialQuaternion(0));
+        } else {
             matrixStack.multiply(Vector3f.POSITIVE_Z.getRadialQuaternion((float) rotator.getRotation().z));
         }
 
         // offset rendered stacks vertically
-        // 0.01 barely brings flat items flush to the ground
-        matrixStack.translate(0, 0, -0.01f);
-        if(itemEntity.getStack().getItem() instanceof BlockItem) {
-            // make blocks flush with the ground
-            matrixStack.translate(0, 0, -0.12f);
-        }
+         // 0.01 barely brings flat items flush to the ground
+         matrixStack.translate(0, 0, 0.01f);
+         if(itemEntity.getStack().getItem() instanceof AliasedBlockItem) {
+ 
+         } else if(itemEntity.getStack().getItem() instanceof BlockItem) {
+             // make blocks flush with the ground
+             matrixStack.translate(0, 0, -0.12f);
+         }
 
         // special-case soul sand
         if(itemEntity.world.getBlockState(itemEntity.getBlockPos()).getBlock().equals(Blocks.SOUL_SAND)) {
