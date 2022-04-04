@@ -1,16 +1,13 @@
 plugins {
-	id 'fabric-loom' version '0.10.13'
+	id 'fabric-loom' version '0.11-SNAPSHOT'
 	id 'maven-publish'
 }
 
-sourceCompatibility = 16
-targetCompatibility = 16
+sourceCompatibility = 17
+targetCompatibility = 17
 
 archivesBaseName = "${modid}"
 version = "${version}" + "-" + project.minecraft_version
-
-minecraft {
-}
 
 repositories {
 	maven { url = "https://maven.fabricmc.net/" }
@@ -39,8 +36,8 @@ tasks.withType(JavaCompile).configureEach {
 	// If Javadoc is generated, this must be specified in that task too.
 	it.options.encoding = "UTF-8"
 
-	// Minecraft 1.17 (21w19a) upwards uses Java 16.
-	it.options.release = 16
+	// Minecraft 1.18 upwards uses Java 17.
+	it.options.release = 17
 }
 
 java {
