@@ -28,12 +28,12 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Random;
+import net.minecraft.util.math.random.Random;
 
 @Mixin(ItemEntityRenderer.class)
 public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity> {
 
-    @Shadow @Final private Random random;
+    @Shadow @Final private Random random = Random.create();
     @Shadow @Final private ItemRenderer itemRenderer;
     @Shadow protected abstract int getRenderedAmount(ItemStack stack);
 
