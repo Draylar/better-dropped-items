@@ -1,6 +1,6 @@
-package bdi.mixin;
+package dev.draylar.bdi.mixin;
 
-import bdi.util.ItemEntityRotator;
+import dev.draylar.bdi.util.ItemEntityRotator;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.util.math.Vec3d;
 import org.spongepowered.asm.mixin.Mixin;

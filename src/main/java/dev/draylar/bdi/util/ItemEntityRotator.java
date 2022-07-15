@@ -1,4 +1,4 @@
-package bdi.util;
+package dev.draylar.bdi.util;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
